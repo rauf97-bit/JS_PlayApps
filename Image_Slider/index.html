@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Slideshow</title>
+    <link rel="stylesheet" href="app.css">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="content">
+            <div class="side_slider">
+                <span onclick="sideSlide(1)" class="right">&rArr;</span>
+                <span onclick="sideSlide(-1)" class="left">&lArr;</span>
+            </div>
+            <div class="gallery">
+                <img src="../images/bg1.jpeg" alt="Slide-*" class="images">
+                <img src="../images/bg2.jpg"  alt="Slide-*" class="images">
+                <img src="../images/bg3.jpeg" alt="Slide-*" class="images">
+                <img src="../images/bg4.jpeg" alt="Slide-*" class="images">
+                <img src="../images/bg5.jpeg" alt="Slide-*" class="images">
+            </div>
+            <div class="btm_slider">
+                <span onclick="btmSlide(1)"></span>
+                <span onclick="btmSlide(2)"></span>
+                <span onclick="btmSlide(3)"></span>
+                <span onclick="btmSlide(4)"></span>
+                <span onclick="btmSlide(5)"></span>
+            </div>
+        </div>
+    </div>
+    <script>
+        var i;
+        let indexValue = 1;
+        showImg(indexValue)
+        const sideSlide = e => {showImg(indexValue += e)}
+        const btmSlide = e => {showImg(indexValue = e)}
+        function showImg(e) {
+            const img = document.querySelectorAll("img")
+            const sliders = document.querySelectorAll(".btm_slider span")
+            if (e > img.length ) {indexValue = 1 }
+            if (e < 1 ) {indexValue = img.length }
+            for (i = 0; i < img.length; i++) {
+                img[i].style.display = "none"
+            }
+            for (i = 0; i < sliders.length; i++) {
+                sliders[i].style.background= "transparent"
+            }
+            img[indexValue - 1].style.display = "block";
+            sliders[indexValue - 1].style.background = "crimson";
+        }
+
+    </script>
+</body>
+</html>

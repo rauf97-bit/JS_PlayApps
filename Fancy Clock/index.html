@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colourful Clock</title>
+    <link rel="stylesheet" href="app.css">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="display">
+            <div id="time">12:00:00 PM</div>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+    <script>
+        const time = document.querySelector('#time')
+        setInterval(() => {
+            let day_night = "AM"
+            const todaysDate = new Date()
+            let hours = todaysDate.getHours()
+            const minutes = todaysDate.getMinutes()
+            const seconds = todaysDate.getSeconds()
+            if (hours > 12) {
+                hours = hours - 12
+                day_night = "PM"
+            }
+            time.textContent = `${hours} : ${minutes} : ${seconds} ${day_night}`
+        }, 1000);
+    </script>
+</body>
+</html>

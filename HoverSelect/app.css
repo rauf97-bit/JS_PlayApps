@@ -1,0 +1,120 @@
+body{
+    margin: 0 auto;
+    /* padding: 0; */
+    display: flex;
+    background-color: white;
+    box-sizing: border-box;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    /* overflow: hidden; */
+    padding: 15rem auto;
+}
+.wrapper{
+    /* height: auto; */
+    margin: auto;
+}
+.image{
+    height: 200px;
+    width: 350px;
+    overflow: hidden;
+}
+.image img{
+    background-size: cover;
+    background-position: center;
+    border-radius: 3px 6px;
+    height: 100%;
+    width: 100%;
+    transition: all 1s ease;
+}
+.image img:hover{
+    transform: scale(1.23);
+}
+.gallery{
+    display: grid;
+    gap: 10px;
+    grid-template-columns: repeat(3 , 1fr);
+}
+@media (max-width: 768px){
+    .gallery{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media (max-width : 528px){
+    .gallery{
+        grid-template-columns: 1fr;
+    }
+    .image{
+        height: 130px;
+        width: 270px;
+    }
+}
+.shadow{
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    background: rgba(17, 16, 16, 0.632);   
+    display: none;
+    /* transition: all 0.5s ease-in; */
+}
+.shadow.show{
+    display: block;
+    transition: all 0.5s ease-in;
+}
+.preview{
+    height: 430px;
+    width: 550px;
+    border-radius: 10px;
+    box-shadow:  3px 5px 4px 5px gray;
+    background: white;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    pointer-events: none;
+}
+.preview.show{
+    opacity: 1;
+    pointer-events: auto;
+    transition: all 0.5s ease-in;
+}
+
+.preview img{
+    width: 100%;
+    height: 90%;
+    border-radius: inherit;
+}
+.preview .arrows span{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2rem;
+    padding: 8px 10px;
+    border-radius: 2px;
+    cursor: pointer;
+    /* color: rebeccapurple; */
+}
+
+.preview .arrows span:hover{
+    background-color: black;
+    color: white;
+}
+.currentImg, .totalImg{
+    font-weight: 600;
+}
+.preview .arrows .right{
+    right: 0%;
+}
+.title{
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.4rem;
+}
+.cross{
+    cursor: pointer;
+    font-weight: 600;
+}
