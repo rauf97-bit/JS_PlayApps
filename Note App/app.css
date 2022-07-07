@@ -1,0 +1,178 @@
+body{
+    margin: 0 auto;
+    background-color: rgb(4, 152, 250);
+    box-sizing: border-box;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+}
+.shadow{
+    position: absolute;
+    z-index: 3;
+    height: 100vh;
+    width: 100vw;
+    background: rgba(17, 16, 16, 0.632);   
+    display: none;
+    transition: all 0.5s ease-in;
+}
+.shadow.show{
+    display: block;
+    transition: all 0.5s ease-in;
+}
+/* main{
+    display: flex;
+    margin: 0 auto;
+} */
+
+/* General Notes Grid */
+.content{
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 265px);
+    justify-content: center;
+    gap: 16px;
+}
+
+.add-note, .note-content{
+    min-height: 200px;
+    border-radius: 10px;
+    box-shadow: 2px 3px 5px gray;
+    background: white;
+    padding: 15px 10px ;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+/* Add Note Grid */
+.add-note, .add-btn, .add-content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.add-content{
+    flex-direction: column;
+}
+.add-content .add-btn{
+    margin-bottom: 10px;
+    border: 2px rgb(4, 152, 250) dashed;
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.add-btn .add-sign{
+    color: rgb(4, 152, 250);
+    font-size: 30px;
+    font-weight: 900;
+}
+.add-content .add-text{
+    color: rgb(4, 152, 250);
+    font-size: 1.2rem;
+}
+/* New Note Grid */
+.note{
+    position: relative;
+}
+.note-content .btm-content{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.note-content .note-desc{
+    color: rgb(70, 65, 65);
+}
+.note-content i{
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 20px;
+    letter-spacing: 2px;
+}
+/* Note Edit & Delete Settings */
+.note-settings{
+    transition: all 0.3s ease-in;
+    transform-origin: bottom right;
+    transform: scale(0);
+    position: absolute;
+    padding: 2px;
+    right: 10px;
+    border-radius: 4px;
+    bottom: 10px;
+    color: white;
+    background-color: rgb(4, 152, 250);
+}
+.note-settings.show{
+    transform: scale(1);
+}
+.note-settings .icons{
+    display: flex;
+    flex-direction: column;
+}
+.icons i {
+    cursor: pointer;
+    padding: 8px 17px;
+}
+.icons i:hover{
+    background-color: rgba(113, 194, 248, 0.438);
+}
+
+/* Form */
+.note-popup{
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: scale(0);
+    transition: all 0.4s ease;
+    z-index: 6;
+}
+.note-popup.show{
+    transform: scale(1.03);
+}
+.note-popup .popup{
+    padding: 20px;
+    border-radius: 6px;
+    background-color: white;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+}
+.popup .popup-title{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgb(189, 184, 184);
+    margin-bottom: 10px;
+}
+.popup-title .cross{
+    cursor: pointer;
+    font-weight: 700;
+    /* color: rgb(4, 152, 250); */
+}
+.popup .form-ctrl .input-group{
+    display: flex;
+    flex-direction: column;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+.popup .form-ctrl .submit-btn{
+    width: 100%;
+    padding: 12px;
+    color: white;
+    background-color: rgb(4, 152, 250);
+    border-radius: 4px;
+    outline: none;
+    cursor: pointer;
+}
+#title, #desc{
+    outline: none;
+}
+#title{
+    height: 50px;
+}
+#desc{
+    height: 100px;
+    resize: none;
+}

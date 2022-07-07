@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Note App</title>
+    <link rel="stylesheet" href="app.css">
+</head>
+
+<body>
+    <section class="note-popup">
+        <div class="popup">
+            <div class="popup-title">
+                <h3 class="note-title">Add a title</h3>
+                <div class="cross">&Cross;</div>
+            </div>
+            <form action="#" class="form-ctrl">
+                <div class="input-group">
+                    <label for="title" class="label-title">Title</label>
+                    <input type="text" name="title" id="title">
+                </div>
+                <div class="input-group">
+                    <label for="desc" class="label-desc">Description</label>
+                    <textarea name="desc" id="desc"></textarea>
+                </div>
+
+                <input type="button" value="Add Note" class="submit-btn">
+            </form>
+        </div>
+    </section>
+    <div class="shadow "></div>
+    <main>
+        <section class="content">
+            <div class="add-note">
+                <div class="add-content">
+
+                    <div class="add-btn">
+                        <p class="add-sign">&plus;</p>
+                    </div>
+                    <div class="add-text"> Add new note</div>
+                </div>
+            </div>
+
+            <div class="note">
+                <div class="note-content">
+                    <h3 class="note-title">This is a Title</h3>
+                    <p class="note-desc">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nobis, nostrum.</p>
+                    <div class="btm-content">
+                        <div class="date">April 3, 2022</div>
+                        <i class="dots">...</i>
+                    </div>
+                </div>
+                <div class="note-settings">
+                    <div class="icons">
+                        <i>Edit</i>
+                        <i>Delete</i>
+                    </div>
+
+                </div>
+            </div>
+            
+            
+        </section>
+    </main>
+    
+    <script src="script.js"></script>
+</body>
+
+</html>
