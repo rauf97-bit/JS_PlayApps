@@ -1,0 +1,111 @@
+:root{
+  --textgray : rgb(34, 32, 32);
+  --lightwhite : #f0f0f0;
+  --shadow : 4px 0px 15px rgb(63, 54, 54);
+  --shadow-sm : 1px 0px 4px pink;
+  --gradient : linear-gradient(pink 0%, rgb(230, 105, 230) 100%);
+}
+body{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+  background: var(--gradient);
+}
+.wrapper{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.main{
+  background: var(--lightwhite);
+  padding: 20px 30px;
+  border-radius: 20px;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  width: 350px;
+  min-height: 450px;
+  position: relative;
+  overflow: hidden;
+}
+.top-bar, .controls, .timer, .row{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.top-bar span{
+  color: var(--textgray);
+}
+.music-img{
+  width: 276px;
+  height: 200px;
+  box-shadow: var(--shadow-sm);
+  border-radius: inherit;
+  margin: 20px auto;
+}
+.music-img img{
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  background-size: contain;
+}
+.music-text{
+  text-align: center;
+  margin: 10px 0;
+}
+.music-text p{
+  margin: 8px;
+}
+.music-text .author, .timer span{
+  color: var(--textgray);
+}
+.music-text .title{
+  font-size: x-large;
+}
+.progress-bar{
+  position: relative;
+  height: 5px;
+  border-radius: 3px;
+  background: var(--gradient);
+  margin: 4px 0;
+}
+.progress-bar span{
+  position: absolute;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: violet;
+  top: -4px;
+  right: 50%;
+}
+.controls{
+  margin: 22px 0;
+}
+.song p{
+  margin: 5px 0;
+
+}
+.controls i{
+  /* color: transparent; */
+  font-size: 2em;
+  /* background: var(--gradient); */
+  user-select: none;
+}
+.music-list{
+  position: absolute;
+  overflow: scroll;
+  bottom: -55%;
+  height: 60%;
+  background: var(--lightwhite);
+  width: 350px;
+  pointer-events: none;
+  opacity: 0;
+  transition: all 0.4s ease-in-out;
+}
+.music-list.show{
+  top: 200px;
+  opacity: 1;
+  pointer-events: all;
+}
