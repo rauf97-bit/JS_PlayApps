@@ -3,7 +3,7 @@
   --lightwhite : #f0f0f0;
   --shadow : 4px 0px 15px rgb(63, 54, 54);
   --shadow-sm : 1px 0px 4px pink;
-  --gradient : linear-gradient(pink 0%, rgb(230, 105, 230) 100%);
+  --gradient : linear-gradient(rgb(230, 105, 230) 0%, rebeccapurple 100%);
 }
 body{
   margin: 0;
@@ -20,6 +20,7 @@ body{
 }
 .main{
   background: var(--lightwhite);
+  opacity: 0.88;
   padding: 20px 30px;
   border-radius: 20px;
   box-shadow: var(--shadow);
@@ -64,10 +65,19 @@ body{
 .music-text .title{
   font-size: x-large;
 }
+.music-progress{
+  background: rgb(224, 216, 216);
+  height: 8px;
+  display: flex;
+  border-radius: 4px;
+  /* justify-content: center; */
+  align-items: center;
+}
 .progress-bar{
   position: relative;
+  width: 0;
   height: 5px;
-  border-radius: 3px;
+  border-radius: 4px;
   background: var(--gradient);
   margin: 4px 0;
 }
@@ -90,8 +100,9 @@ body{
 .controls i{
   /* color: transparent; */
   font-size: 2em;
+  cursor: pointer;
   /* background: var(--gradient); */
-  user-select: none;
+  /* user-select: none; */
 }
 .music-list{
   position: absolute;
