@@ -19,7 +19,12 @@ const main = document.querySelector(".main"),
   fullTime = main.querySelector(".end"),
   musicPopup = main.querySelector(".music-content");
 
-let musicIndex = 1;
+let musicIndex = Math.floor(Math.random() * songs.length + 1);
+// Activate function on load of window screen
+window.addEventListener("load", () => {
+  showCurrentSong(musicIndex);
+  playingPopupMusic();
+});
 // Show music popup List
 list.addEventListener("click", () => {
   musicList.classList.add("show");
@@ -27,6 +32,13 @@ list.addEventListener("click", () => {
 cross.addEventListener("click", () => {
   musicList.classList.remove("show");
 });
+// Removing Popup on click outside popup area
+// window.addEventListener('click', (e)=>{
+//   const closeToPopup = e.target.closest('.music-list')
+//   if (closeToPopup && !musicList.classList.contains("show")) {
+//     musicList.classList.remove("show")
+//   }
+// })
 
 // Load the current song on webpage
 const showCurrentSong = (indexNum) => {
@@ -34,9 +46,7 @@ const showCurrentSong = (indexNum) => {
   musicAuthor.innerText = songs[indexNum - 1].artiste;
   musicImg.src = songs[indexNum - 1].img;
   currentAudio.src = songs[indexNum - 1].src;
-  // console.log(currentAudio.src)
 };
-showCurrentSong(musicIndex);
 
 // Play and Pause song function
 function playSong() {
@@ -52,6 +62,7 @@ function pauseSong() {
 playPause.addEventListener("click", () => {
   const isMusicPlaying = main.classList.contains("paused");
   isMusicPlaying ? pauseSong() : playSong();
+  playingPopupMusic();
 });
 
 // Play Next & Previous song Function
@@ -67,11 +78,13 @@ next.addEventListener("click", () => {
   nextSong();
   showCurrentSong(musicIndex);
   playSong();
+  playingPopupMusic();
 });
 prev.addEventListener("click", () => {
   prevSong();
   showCurrentSong(musicIndex);
   playSong();
+  playingPopupMusic();
 });
 
 // Function to update length of progress bar simultaneously with second timing of current playing song
@@ -158,6 +171,7 @@ currentAudio.addEventListener("ended", () => {
       musicIndex = randomIndex;
       showCurrentSong(musicIndex);
       playSong();
+      playingPopupMusic();
       break;
   }
 });
@@ -180,16 +194,17 @@ currentAudio.addEventListener("ended", () => {
 // Function to get full list of songs to display on musicList popup
 songs.map((songs, i) => {
   const musicDiv = `
-  <div class="row">
-    <div class="song">
-        <p class="song-title">${songs.track}</p>
-        <p>${songs.artiste}</p>
-    </div>
+  <div class="row" li-index="${i + 1}">
+    <ul class="song">
+        <li class="song-title">${songs.track}</li>
+        <li>${songs.artiste}</li>
+    </ul>
     <audio src="${songs.src}" id="music-${i}"></audio>
     <div class="duration-${i}"></div>
   </div>
   `;
   // Function to get full duration of songs to display on musicList popup
+
   currentAudio.addEventListener("loadeddata", () => {
     const listDuration = main.querySelector(`.duration-${i}`);
     const currentSong = main.querySelector(`#music-${i}`);
@@ -200,7 +215,32 @@ songs.map((songs, i) => {
       timeToSec = `0${timeToSec}`;
     }
 
-    listDuration.innerText = `${timeToMin}:${timeToSec}`;
+    listDuration.textContent = `${timeToMin}:${timeToSec}`;
+    listDuration.setAttribute('t-duration',`${timeToMin}:${timeToSec}` )
   });
   musicPopup.insertAdjacentHTML("beforeend", musicDiv);
 });
+// Function to play song from popup musicList
+const ulTags = musicPopup.querySelectorAll(".row");
+const ulTagsArr = Array.from(ulTags);
+function playingPopupMusic() {
+  ulTagsArr.map((item, i) => {
+    let itemDiv = main.querySelector(`.duration-${i}`);
+    if (item.classList.contains("playing")) {
+      item.classList.remove("playing");
+      itemDiv.innerText = itemDiv.getAttribute('t-duration');
+    }
+    if (item.getAttribute("li-index") == musicIndex) {
+      item.classList.add("playing");
+      itemDiv.innerHTML = 'Playing..'
+    }
+    item.setAttribute("onclick", "clicked(this)");
+  });
+}
+function clicked(elem) {
+  const liIndex = elem.getAttribute("li-index");
+  musicIndex = liIndex;
+  showCurrentSong(musicIndex);
+  playSong();
+  playingPopupMusic();
+}

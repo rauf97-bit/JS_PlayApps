@@ -5,6 +5,10 @@
   --shadow-sm : 1px 0px 4px pink;
   --gradient : linear-gradient(rgb(230, 105, 230) 0%, rebeccapurple 100%);
 }
+ul li{
+  list-style: none;
+  cursor: pointer;
+}
 body{
   margin: 0;
   padding: 0;
@@ -19,7 +23,7 @@ body{
   height: 100vh;
 }
 .main{
-  background: var(--lightwhite);
+  background: rgba(95, 58, 131, 0.89);
   opacity: 0.88;
   padding: 20px 30px;
   border-radius: 20px;
@@ -30,6 +34,7 @@ body{
   min-height: 450px;
   position: relative;
   overflow: hidden;
+  box-sizing: border-box;
 }
 .top-bar, .controls, .timer, .row{
   display: flex;
@@ -38,6 +43,8 @@ body{
 }
 .top-bar span{
   color: var(--textgray);
+  font-size: 1.2rem;
+  font-weight: 400;
 }
 .music-img{
   width: 276px;
@@ -58,6 +65,8 @@ body{
 }
 .music-text p{
   margin: 8px;
+  font-size: 1.2rem;
+  font-weight: 400;
 }
 .music-text .author, .timer span{
   color: var(--textgray);
@@ -66,7 +75,7 @@ body{
   font-size: x-large;
 }
 .music-progress{
-  background: rgb(224, 216, 216);
+  background: rgb(193, 167, 219);
   height: 8px;
   display: flex;
   border-radius: 4px;
@@ -93,30 +102,55 @@ body{
 .controls{
   margin: 22px 0;
 }
-.song p{
+.row {
   margin: 5px 0;
-
+  font-size: 1.1em;
+  font-weight: 300;
 }
 .controls i{
   /* color: transparent; */
   font-size: 2em;
   cursor: pointer;
-  /* background: var(--gradient); */
-  /* user-select: none; */
+
+}
+.popup{
+  width: 100%;
+  display: flex;
+  
+  justify-content: center;
+  align-items: center;
+  box-shadow: var(--shadow);
 }
 .music-list{
   position: absolute;
-  overflow: scroll;
+  overflow: auto;
   bottom: -55%;
   height: 60%;
-  background: var(--lightwhite);
-  width: 350px;
+  background: rgb(147, 93, 201);
+  padding: 10px 20px;
+  border-radius: 18px;
+  width: 90%;
   pointer-events: none;
   opacity: 0;
   transition: all 0.4s ease-in-out;
+}
+.music-list::-webkit-scrollbar{
+  width: 0;
 }
 .music-list.show{
   top: 200px;
   opacity: 1;
   pointer-events: all;
+}
+.row{
+  border-bottom: 1px solid black;
+  cursor: pointer;
+}
+.row.playing{
+  color: var(--lightwhite);
+}
+.music-list .header{
+  /* position: sticky; */
+  font-size: 1.2rem;
+  font-weight: 400;
 }
